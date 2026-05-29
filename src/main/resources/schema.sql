@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS t_position;
+
+CREATE TABLE t_position (
+    id          BIGINT AUTO_INCREMENT PRIMARY KEY,
+    title       VARCHAR(200)  NOT NULL COMMENT '岗位名称',
+    description TEXT          NOT NULL COMMENT '岗位描述',
+    status      VARCHAR(20)  NOT NULL DEFAULT 'DRAFT' COMMENT '状态: DRAFT/REVIEWING/REJECTED/PUBLISHED/CLOSED',
+    expire_date DATE         DEFAULT NULL COMMENT '到期时间，为空则永不过期',
+    create_time DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    update_time DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间'
+);
