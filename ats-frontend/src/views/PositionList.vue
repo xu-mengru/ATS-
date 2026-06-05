@@ -30,6 +30,24 @@
         </div>
       </div>
       <div class="stat-card">
+        <div class="stat-icon reviewing">
+          <el-icon size="22"><Clock /></el-icon>
+        </div>
+        <div class="stat-info">
+          <div class="stat-label">审核中</div>
+          <div class="stat-value">{{ stats.reviewing }}</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon rejected">
+          <el-icon size="22"><WarningFilled /></el-icon>
+        </div>
+        <div class="stat-info">
+          <div class="stat-label">已驳回</div>
+          <div class="stat-value">{{ stats.rejected }}</div>
+        </div>
+      </div>
+      <div class="stat-card">
         <div class="stat-icon closed">
           <el-icon size="22"><CircleClose /></el-icon>
         </div>
@@ -115,7 +133,7 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
-import { Plus, Upload, Search, Briefcase, CircleCheck, EditPen, CircleClose } from '@element-plus/icons-vue'
+import { Plus, Upload, Search, Briefcase, CircleCheck, EditPen, Clock, WarningFilled, CircleClose } from '@element-plus/icons-vue'
 import { getPositions, deletePosition, submitForReview, approvePosition, rejectPosition, getStatistics } from '../api/position'
 import PositionTable from '../components/PositionTable.vue'
 import FileUpload from '../components/FileUpload.vue'
@@ -135,6 +153,8 @@ const stats = reactive({
   total: 0,
   published: 0,
   draft: 0,
+  reviewing: 0,
+  rejected: 0,
   closed: 0
 })
 
@@ -144,7 +164,9 @@ const fetchStats = async () => {
     const d = res.data
     stats.total = d.total || 0
     stats.published = d.published || 0
-    stats.draft = (d.draft || 0) + (d.reviewing || 0) + (d.rejected || 0)
+    stats.draft = d.draft || 0
+    stats.reviewing = d.reviewing || 0
+    stats.rejected = d.rejected || 0
     stats.closed = d.closed || 0
   } catch { /* ignore */ }
 }

@@ -93,6 +93,9 @@ public class PositionServiceImpl implements PositionService {
     @Transactional
     public void deletePosition(Long id) {
         Position position = getPositionById(id);
+        if ("PUBLISHED".equals(position.getStatus())) {
+            throw new BusinessException(ResultCode.BAD_REQUEST, "已发布的岗位不可直接删除，请先关闭该岗位");
+        }
         positionRepository.delete(position);
         log.info("删除岗位成功: id={}, title={}", id, position.getTitle());
     }

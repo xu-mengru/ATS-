@@ -35,7 +35,7 @@ public class PositionExcelListener implements ReadListener<PositionExcelDTO> {
         Position position = new Position();
         position.setTitle(data.getTitle().trim());
         position.setDescription(data.getDescription().trim());
-        position.setStatus(data.getStatus() != null ? data.getStatus().trim() : "PUBLISHED");
+        position.setStatus(data.getStatus() != null ? data.getStatus().trim() : "DRAFT");
         positionRepository.save(position);
         successCount++;
         log.debug("Excel 导入岗位: {}", data.getTitle());

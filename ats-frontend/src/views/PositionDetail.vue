@@ -73,12 +73,12 @@ const renderedDescription = computed(() => {
 })
 
 const statusClass = (status) => {
-  const map = { PUBLISHED: 'published', DRAFT: 'draft', CLOSED: 'closed' }
+  const map = { PUBLISHED: 'published', DRAFT: 'draft', REVIEWING: 'reviewing', REJECTED: 'rejected', CLOSED: 'closed' }
   return map[status] || 'draft'
 }
 
 const statusLabel = (status) => {
-  const map = { PUBLISHED: '已发布', DRAFT: '草稿', CLOSED: '已关闭' }
+  const map = { PUBLISHED: '已发布', DRAFT: '草稿', REVIEWING: '审核中', REJECTED: '已驳回', CLOSED: '已关闭' }
   return map[status] || status
 }
 
