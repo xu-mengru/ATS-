@@ -100,9 +100,16 @@ public class PositionController {
      */
     @PostMapping("/upload")
     public Result<Map<String, Object>> upload(@RequestParam("file") MultipartFile file) throws IOException {
-        int count = positionService.importExcel(file);
+        Map<String, Object> result = positionService.importExcel(file);
+        int count = (int) result.get("count");
+        @SuppressWarnings("unchecked")
+        List<String> errors = (List<String>) result.get("errors");
         Map<String, Object> data = new HashMap<>();
         data.put("count", count);
+        if (errors != null && !errors.isEmpty()) {
+            data.put("errors", errors);
+            return Result.success("成功导入 " + count + " 条，失败 " + errors.size() + " 条", data);
+        }
         return Result.success("成功导入 " + count + " 条岗位记录", data);
     }
 

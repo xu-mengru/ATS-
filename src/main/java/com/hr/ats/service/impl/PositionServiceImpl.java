@@ -102,17 +102,19 @@ public class PositionServiceImpl implements PositionService {
 
     @Override
     @Transactional
-    public int importExcel(MultipartFile file) throws IOException {
+    public Map<String, Object> importExcel(MultipartFile file) throws IOException {
         PositionExcelListener listener = new PositionExcelListener(positionRepository);
         EasyExcel.read(file.getInputStream(), PositionExcelDTO.class, listener).sheet().doRead();
         int count = listener.getSuccessCount();
+        Map<String, Object> result = new HashMap<>();
+        result.put("count", count);
         if (listener.hasErrors()) {
             log.warn("Excel 批量导入完成: 成功 {} 条, 错误 {} 条", count, listener.getErrors().size());
-            throw new BusinessException(ResultCode.BAD_REQUEST,
-                    "成功导入 " + count + " 条，失败 " + listener.getErrors().size() + " 条。错误详情: " + String.join("; ", listener.getErrors()));
+            result.put("errors", listener.getErrors());
+        } else {
+            log.info("Excel 批量导入完成: 成功 {} 条", count);
         }
-        log.info("Excel 批量导入完成: 成功 {} 条", count);
-        return count;
+        return result;
     }
 
     @Override

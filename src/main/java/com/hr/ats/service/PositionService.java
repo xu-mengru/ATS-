@@ -22,7 +22,7 @@ public interface PositionService {
 
     void deletePosition(Long id);
 
-    int importExcel(MultipartFile file) throws IOException;
+    Map<String, Object> importExcel(MultipartFile file) throws IOException;
 
     List<Position> getAllPositions();
 
