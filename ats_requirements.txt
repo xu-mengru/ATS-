@@ -1,0 +1,178 @@
+
+
+1. 
+
+ AI 
+  AI 
+
+RESTfulAPI Excel 
+
+2.   
+     
+     ""/
+     
+ 
+ /
+
+3. 
+
+3.1 
+
+  CRUD
+   Web API 
+  
+  PC  Web  API 
+  Excel 
+   Excel Excel "
+  """
+
+3.2  1-2 
+
+  
+  ""/"
+  "
+  
+  
+
+      - 1
+   
+         
+   
+   
+   
+
+4. 
+
+4.1 
+
+  Spring Boot
+  RESTful Web API
+   JSON
+   MySQL
+   AI 
+
+4.2 
+
+  PC  Web 
+  
+   Vue 3 + Element Plus HTML + CSS + JS API
+  Excel 
+
+4.3 
+
+ JSON 
+
+                                             JSON
+
+{
+
+   "code": 200,
+
+   "message": "success",
+
+   "data": ""
+
+}
+
+                 HTTP       code   message  
+  data
+   null
+
+5. 
+
+position
+
+                                   - 2
+                                     
+id           Long / Integer          
+title        String                  "Java "
+description  StringTEXT              
+                                     
+status       String/Enum
+                                     DRAFTPENDING
+createdAt    LocalDateTime           CLOSED
+updatedAt    LocalDateTime           
+()           String                  
+                                     
+
+description 
+
+6. 
+
+ /webapi
+
+6.1  CRUD 
+
+             URL                     
+
+GET          /webapi/positions       
+
+GET          /webapi/positions/{id}   ID 
+
+POST         /webapi/positions       
+
+PUT          /webapi/positions/{id}  
+
+DELETE       /webapi/positions/{id}  
+
+
+  GET /webapi/positions
+  
+
+                                                                                         JSON
+
+       {
+          "code": 200,
+          "message": "success",
+          "data": [
+             {
+                "id": 1,
+                "title": "Java",
+
+                                        - 3
+                "description": "... ... ...",
+             }
+          ]
+       }
+
+  POST /webapi/positions
+  
+
+                                                                                         JSON
+
+       {
+          "title": "",
+          "description": "... ... ..."
+
+       }
+
+   data  id 
+  PUT /webapi/positions/{id}
+   POST ID 
+  DELETE /webapi/positions/{id}
+  
+
+7. 
+
+  
+  
+  /
+  Excel 
+  
+
+     /
+     
+   API 
+
+8. AI 
+
+ AI 
+
+9. 
+
+1.  + 
+2. 
+3. 
+
+                                                            - 4
+
